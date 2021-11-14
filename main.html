@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <title>Bored</title>
+</head>
+<body>
+    <div class="content" id="boredApp">
+        <h1>Random activity suggestor</h1>
+        <div class="row">
+            <div class="col">
+                <p>{{activity.activity}}</p>
+                <p v-if="userPicked">Type: {{activity.type}} - Participants: {{activity.participants}}</p>
+                <button @click="getActivity">New Activity</button>
+                <button @click="saveActivity(activity)">Save</button>
+                <p v-if="covidMode">Covid mode Enabled</p>
+                <input type="checkbox" v-model="covidMode" @click="toggleCovidMode">
+
+            </div>
+            <div class="col-4">
+                <h2>Saved Activites</h2>
+                <ul>
+                    <li v-for="activity in savedActivities">{{activity.activity}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="j.js"></script>
+</body>
+</html>
